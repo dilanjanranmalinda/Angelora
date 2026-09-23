@@ -1,7 +1,8 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { Check, Mail } from 'lucide-react'
 import StaticPage, { ProseHeading, ProseText } from '@/components/StaticPage'
+import { SITE_CONFIG } from '@/config'
 import { applySeoMeta } from '@/utils/seo'
 
 export default function Contact() {
@@ -11,15 +12,23 @@ export default function Contact() {
     applySeoMeta({
       title: 'Contact | Angelora',
       description:
-        'Say hello to Angelora — whether it is feedback, a suggestion, or a question about your daily experience.',
+        'Say hello to Angelora — feedback, a suggestion, or a question about your daily experience.',
       path: '/contact',
     })
   }, [])
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    const form = event.target as HTMLFormElement
+    const data = new FormData(form)
+    const name = String(data.get('name') ?? '')
+    const email = String(data.get('email') ?? '')
+    const message = String(data.get('message') ?? '')
+    const subject = `Angelora message from ${name || 'a visitor'}`
+    const body = `${message}\n\n— ${name}\nReply-to: ${email}`
+    window.location.href = `mailto:${SITE_CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSent(true)
-    ;(event.target as HTMLFormElement).reset()
+    form.reset()
   }
 
   return (
@@ -29,9 +38,15 @@ export default function Contact() {
     >
       <ProseHeading>Write to us</ProseHeading>
       <ProseText>
-        During the MVP there is no backend, so messages go nowhere yet — this is a
-        placeholder form that will be wired up when we add infrastructure. You can
-        reach out socially through the handles on our social profiles.
+        During the MVP the quickest way is email. Write to us at{' '}
+        <a
+          href={`mailto:${SITE_CONFIG.contactEmail}`}
+          className="font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:text-accent-soft"
+        >
+          {SITE_CONFIG.contactEmail}
+        </a>{' '}
+        — or use the form below and your email app will open with the message
+        ready to send.
       </ProseText>
 
       <form onSubmit={handleSubmit} className="panel space-y-4 rounded-2xl p-6" noValidate>
@@ -42,6 +57,7 @@ export default function Contact() {
             </label>
             <input
               id="contact-name"
+              name="name"
               type="text"
               required
               maxLength={50}
@@ -55,6 +71,7 @@ export default function Contact() {
             </label>
             <input
               id="contact-email"
+              name="email"
               type="email"
               required
               className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-ink placeholder:text-mute/50 focus:border-accent focus:outline-none"
@@ -68,6 +85,7 @@ export default function Contact() {
           </label>
           <textarea
             id="contact-message"
+            name="message"
             required
             rows={5}
             maxLength={1000}
@@ -84,17 +102,17 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center gap-2 rounded-xl border border-mint/30 bg-mint/10 px-4 py-3 text-sm font-medium text-mint"
             >
-              <Check size={16} /> Thanks! Your message is ready to be sent once our
-              contact channel is live.
+              <Check size={16} /> Your email app should have opened with your
+              message ready to send.
             </motion.p>
           ) : (
             <motion.button
               key="button"
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="h-12 w-full rounded-full bg-gradient-to-r from-accent-deep via-accent to-accent-soft text-base font-bold text-night"
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-deep via-accent to-accent-soft text-base font-bold text-night"
             >
-              Send Message
+              <Mail size={18} /> Send Message
             </motion.button>
           )}
         </AnimatePresence>

@@ -31,6 +31,21 @@ export default function AffirmationsPage() {
         ))}
       </section>
 
+      <section className="mt-14">
+        <h2 className="text-xl font-bold text-ink sm:text-2xl">How to use affirmations</h2>
+        <p className="mt-3 leading-relaxed text-mute">
+          An affirmation is a short, realistic sentence you repeat to steer your
+          thoughts in a calmer, more confident direction. Pick one in the morning,
+          say it slowly three times, and notice how it changes the tone of your day.
+          They are prompts for reflection — not rules, and certainly not promises.
+        </p>
+        <p className="mt-3 leading-relaxed text-mute">
+          Many people find affirmations most effective when they are paired with a
+          daily ritual: with coffee, on a walk, or just before sleep. Start with a
+          single affirmation and let it evolve as your mood and needs change.
+        </p>
+      </section>
+
       <section className="mt-14 rounded-2xl border border-accent/20 bg-accent/5 p-6 text-center">
         <h2 className="text-lg font-bold text-accent-soft">Your affirmation for today</h2>
         <p className="mx-auto mt-2 max-w-lg text-mute">

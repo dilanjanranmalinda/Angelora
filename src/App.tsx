@@ -4,7 +4,9 @@ import { MotionConfig } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SideRailAds from '@/components/advertising/SideRailAds'
+import CookieConsent from '@/components/CookieConsent'
 import { useLocalProfile } from '@/hooks/useLocalProfile'
+import { getConsent, loadAnalytics } from '@/utils/consent'
 import Home from '@/pages/Home'
 
 const About = lazy(() => import('@/pages/About'))
@@ -41,7 +43,16 @@ function PageFallback() {
 }
 
 export default function App() {
-  const { clearData } = useLocalProfile()
+  const { clearData, clearConsentChoice } = useLocalProfile()
+
+  useEffect(() => {
+    if (getConsent() === 'accepted') loadAnalytics()
+  }, [])
+
+  const handleClearAllData = () => {
+    clearData()
+    clearConsentChoice()
+  }
 
   return (
     <MotionConfig reducedMotion="user">
@@ -50,6 +61,7 @@ export default function App() {
         <div className="cosmic-bg flex min-h-screen flex-col">
           <Navbar />
           <SideRailAds />
+          <CookieConsent />
           <div className="flex-1">
             <Suspense fallback={<PageFallback />}>
               <Routes>
@@ -69,7 +81,7 @@ export default function App() {
               </Routes>
             </Suspense>
           </div>
-          <Footer onClearData={clearData} />
+          <Footer onClearData={handleClearAllData} />
         </div>
       </BrowserRouter>
     </MotionConfig>

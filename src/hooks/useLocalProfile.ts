@@ -82,6 +82,14 @@ export function useLocalProfile() {
     }
   }, [])
 
+  const clearConsentChoice = useCallback(() => {
+    try {
+      window.localStorage.removeItem('angelora:consent')
+    } catch {
+      // ignore
+    }
+  }, [])
+
   return {
     profile,
     preferences,
@@ -90,5 +98,6 @@ export function useLocalProfile() {
     noteGeneratedToday,
     hasGeneratedToday,
     clearData,
+    clearConsentChoice,
   }
 }

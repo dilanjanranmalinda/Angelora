@@ -8,6 +8,7 @@ export const SITE_CONFIG = {
   social: {
     handle: '@angelora',
   },
+  contactEmail: 'dilanjanranmalinda98@gmail.com',
   /** Advertising is disabled for the MVP. Set VITE_ADS_ENABLED=true only after
    *  an advertising provider is integrated and configured. */
   adsEnabled: (import.meta.env.VITE_ADS_ENABLED as string | undefined) === 'true',

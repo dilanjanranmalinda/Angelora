@@ -48,6 +48,13 @@ export default function Privacy() {
         other service. We do not sell, rent or trade your information.
       </ProseText>
       <ProseText>
+        We ask for your consent with a short banner before loading analytics. If
+        you accept, an anonymous identifier cookie is placed and analytics loads; if
+        you decline, no analytics script runs. You can change your mind at any time
+        by using the &ldquo;Clear My Data&rdquo; button in the footer, which removes
+        your stored choice so the banner appears again.
+      </ProseText>
+      <ProseText>
         Some visitors, primarily in the UK and EU, are entitled to additional
         rights under data protection law: the right to access, correct, erase or
         restrict processing of your personal data, and to withdraw consent. You can
@@ -70,18 +77,22 @@ export default function Privacy() {
 
       <ProseHeading>Advertising</ProseHeading>
       <ProseText>
-        Angleora does not currently run advertising. If we add an advertising
-        provider in the future, this policy will be updated to describe the tools
-        used and any choices available to you before that happens.
+        Angelora does not currently run advertising. If we add an advertising
+        provider (such as Google AdSense) in the future, this policy will be
+        updated to describe the tools used and any choices available to you before
+        that happens. Advertisements will only be shown after the same consent
+        banner has been accepted, and ads never interrupt or replace your daily
+        experience.
       </ProseText>
 
       <ProseHeading>Compliance</ProseHeading>
       <ProseText>
-        We follow the principles of transparency and privacy by design. Where required
-        by law (including the UK GDPR, EU GDPR and, for visitors in the United States,
-        state laws such as the California Consumer Privacy Act), we will add a consent
-        prompt and the specific rights and controls described in that legislation
-        before any new data processing begins.
+        We follow the principles of transparency and privacy by design. Our consent
+        banner honors UK GDPR and EU GDPR expectations, and for visitors in the
+        United States we respect the transparency requirements of state laws such as
+        the California Consumer Privacy Act — including that personal information is
+        never sold. As Angelora grows, the specific rights and controls described in
+        those laws will be kept current on this page.
       </ProseText>
 
       <ProseHeading>Changes</ProseHeading>

@@ -1,5 +1,10 @@
 import type { DailyExperience } from '@/types/daily'
-import { siteUrl, SITE_CONFIG } from '@/config'
+import { SITE_CONFIG } from '@/config'
+
+/** The exact URL the user is on — always live, never stale after a deploy. */
+export function currentPageUrl(): string {
+  return typeof window !== 'undefined' ? window.location.href : SITE_CONFIG.url
+}
 
 export function canUseWebShare(): boolean {
   return typeof navigator !== 'undefined' && typeof navigator.share === 'function'
@@ -19,12 +24,12 @@ export function buildShareText(experience: DailyExperience): string {
     `"${experience.message}"`,
     ``,
     `${SITE_CONFIG.brand} — ${SITE_CONFIG.tagline}`,
-    siteUrl(),
+    currentPageUrl(),
   ].join('\n')
 }
 
 export function buildShareUrl(): string {
-  return siteUrl('/')
+  return currentPageUrl()
 }
 
 export async function copyTextToClipboard(text: string): Promise<boolean> {

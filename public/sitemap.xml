@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://angelora.vercel.app/</loc>
+    <loc>https://angelora-two.vercel.app/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/numbers</loc>
+    <loc>https://angelora-two.vercel.app/numbers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/moments</loc>
+    <loc>https://angelora-two.vercel.app/moments</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/colors</loc>
+    <loc>https://angelora-two.vercel.app/colors</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/affirmations</loc>
+    <loc>https://angelora-two.vercel.app/affirmations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/about</loc>
+    <loc>https://angelora-two.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/privacy</loc>
+    <loc>https://angelora-two.vercel.app/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/terms</loc>
+    <loc>https://angelora-two.vercel.app/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://angelora.vercel.app/contact</loc>
+    <loc>https://angelora-two.vercel.app/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

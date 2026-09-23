@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Canonical sitemap. Update this URL when a custom domain is connected.
+Sitemap: https://angelora.vercel.app/sitemap.xml

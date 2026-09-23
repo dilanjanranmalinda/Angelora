@@ -1,0 +1,38 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080A18"/>
+      <stop offset="1" stop-color="#10152B"/>
+    </linearGradient>
+    <linearGradient id="aurora" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B8A1FF"/>
+      <stop offset="0.5" stop-color="#8E7BFF"/>
+      <stop offset="1" stop-color="#4C6BFF"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E8C77A"/>
+      <stop offset="1" stop-color="#F5D6FF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#B8A1FF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#B8A1FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="960" cy="150" r="60" fill="none" stroke="url(#aurora)" stroke-width="8"/>
+  <circle cx="960" cy="150" r="24" fill="#F5D6FF"/>
+  <path d="M960 112 L972 134 L960 130 L948 134 Z" fill="#F8F7FF"/>
+  <circle cx="1080" cy="250" r="6" fill="#F8F7FF" opacity="0.55"/>
+  <circle cx="150" cy="470" r="6" fill="#F8F7FF" opacity="0.5"/>
+  <circle cx="1120" cy="480" r="5" fill="#E8C77A" opacity="0.7"/>
+  <circle cx="240" cy="140" r="4" fill="#9BE7C4" opacity="0.7"/>
+  <text x="160" y="270" font-family="Georgia, 'Times New Roman', serif" font-size="96" fill="#F8F7FF" letter-spacing="6">Angelora</text>
+  <text x="164" y="330" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="40" fill="#E8C77A" letter-spacing="2">Your day. Your signs. Your moment.</text>
+  <text x="164" y="420" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#A7AAC4" letter-spacing="1">Discover your personal number, daily color, mirror moment</text>
+  <text x="164" y="460" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#A7AAC4" letter-spacing="1">and a little inspiration for every day.</text>
+  <rect x="162" y="500" width="260" height="56" rx="28" fill="url(#aurora)"/>
+  <text x="292" y="536" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="24" fill="#080A18" text-anchor="middle" letter-spacing="1">DISCOVER MY DAY</text>
+  <path d="M1100 60 C1050 80 1150 100 1100 120" stroke="url(#gold)" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M100 580 C160 560 90 540 160 520" stroke="#B8A1FF" stroke-width="3" fill="none" opacity="0.4"/>
+</svg>

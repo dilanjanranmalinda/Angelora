@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Cookie } from 'lucide-react'
-import { getConsent, setConsent, loadAnalytics, type ConsentState } from '@/utils/consent'
+import { getConsent, setConsent, loadAnalytics, loadAdsense, type ConsentState } from '@/utils/consent'
 
 export default function CookieConsent() {
   const [consent, setLocalConsent] = useState<ConsentState>(() => getConsent())
@@ -13,6 +13,7 @@ export default function CookieConsent() {
     setConsent('accepted')
     setLocalConsent('accepted')
     loadAnalytics()
+    loadAdsense()
   }
 
   const decline = () => {
@@ -39,9 +40,10 @@ export default function CookieConsent() {
             <div>
               <p className="font-semibold text-ink">Cookies make Angelora better</p>
               <p className="mt-1 text-sm leading-relaxed text-mute">
-                We use Google Analytics to understand how the site is used. It
-                stores an anonymous identifier and never sees your birthday or
-                name. Read more in our{' '}
+                With your permission we use Google Analytics to understand how the
+                site is used, and may show respectful advertising in the side
+                panels on large screens. Neither ever sees your birthday or name.
+                Read more in our{' '}
                 <Link
                   to="/privacy"
                   className="text-accent underline decoration-accent/40 underline-offset-4 hover:text-accent-soft"

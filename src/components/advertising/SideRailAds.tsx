@@ -1,28 +1,36 @@
 import { SITE_CONFIG } from '@/config'
-import { AdSlot } from '@/components/advertising/AdSlot'
+import { AdSlot, type AdPlacement } from '@/components/advertising/AdSlot'
+
+const RAILS: { placement: AdPlacement; side: 'left' | 'right' }[] = [
+  { placement: 'left-rail', side: 'left' },
+  { placement: 'right-rail', side: 'right' },
+]
 
 /**
- * Desktop side-rail ad placements (left + right, e.g. 300×250 rectangles).
+ * Desktop side-rail ad placements (300×250, left + right).
  *
- * Renders nothing until advertising is enabled (`VITE_ADS_ENABLED=true`).
- * When enabled, the rails are sticky and only appear on wide screens so the
- * mobile-first experience is never affected.
+ * The rails only appear on very wide screens, so the mobile experience is
+ * never affected. Each rail renders nothing until consent is given and a real
+ * ad-unit slot ID is configured in SITE_CONFIG.adsense.slots.
  */
 export default function SideRailAds() {
-  if (!SITE_CONFIG.adsEnabled) return null
+  if (!SITE_CONFIG.adsense.enabled) return null
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-y-0 left-3 z-0 hidden items-center 2xl:flex">
-        <div className="pointer-events-auto">
-          <AdSlot placement="left-rail" format="rectangle" />
+      {RAILS.map(({ placement, side }) => (
+        <div
+          key={placement}
+          aria-hidden="true"
+          className={`pointer-events-none fixed inset-y-0 ${
+            side === 'left' ? 'left-3' : 'right-3'
+          } z-0 hidden items-center 2xl:flex`}
+        >
+          <div className="pointer-events-auto">
+            <AdSlot placement={placement} />
+          </div>
         </div>
-      </div>
-      <div className="pointer-events-none fixed inset-y-0 right-3 z-0 hidden items-center 2xl:flex">
-        <div className="pointer-events-auto">
-          <AdSlot placement="right-rail" format="rectangle" />
-        </div>
-      </div>
+      ))}
     </>
   )
 }

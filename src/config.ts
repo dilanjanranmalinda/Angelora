@@ -9,9 +9,17 @@ export const SITE_CONFIG = {
     handle: '@angelora',
   },
   contactEmail: 'dilanjanranmalinda98@gmail.com',
-  /** Advertising is disabled for the MVP. Set VITE_ADS_ENABLED=true only after
-   *  an advertising provider is integrated and configured. */
-  adsEnabled: (import.meta.env.VITE_ADS_ENABLED as string | undefined) === 'true',
+  /** Google AdSense. Side-rail units render only after consent is given AND a
+   *  real ad-unit slot ID is configured below. Flip VITE_ADS_ENABLED=true when
+   *  the publisher is active. */
+  adsense: {
+    client: 'ca-pub-5345162386229869',
+    enabled: (import.meta.env.VITE_ADS_ENABLED as string | undefined) === 'true',
+    slots: {
+      leftRail: '',
+      rightRail: '',
+    },
+  },
 } as const
 
 export function siteUrl(path = '/'): string {

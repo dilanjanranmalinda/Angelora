@@ -1,5 +1,1 @@
-# Google AdSense ads.txt
-# After your site is approved on adsense.google.com, replace the example line
-# below with your real publisher ID and uncomment it:
-#
-#google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-5345162386229869, DIRECT, f08c47fec0942fa0

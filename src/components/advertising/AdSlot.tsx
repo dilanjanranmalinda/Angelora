@@ -1,35 +1,52 @@
+import { useEffect } from 'react'
 import { SITE_CONFIG } from '@/config'
+import { areAdsAllowed } from '@/utils/consent'
 
-export type AdPlacement =
-  | 'left-rail'
-  | 'right-rail'
+export type AdPlacement = 'left-rail' | 'right-rail'
 
 interface AdSlotProps {
   placement: AdPlacement
-  format?: 'rectangle' | 'skyscraper'
-  className?: string
 }
 
-/**
- * Provider-independent ad slot.
- *
- * Advertising is DISABLED in the current MVP: this component renders nothing
- * until `VITE_ADS_ENABLED=true` is set (and an advertising provider is
- * configured). When enabled, the visual container occupies reserved space so
- * the page never shifts on load. The provider fills the container; the
- * surrounding layout is final.
- */
-export function AdSlot({ placement, format = 'rectangle' }: AdSlotProps) {
-  if (!SITE_CONFIG.adsEnabled) return null
+const WIDTH = 300
+const HEIGHT = 250
 
-  const dimensions =
-    format === 'skyscraper' ? 'h-[600px] w-[300px]' : 'h-[250px] w-[300px]'
+/**
+ * 300×250 AdSense side-rail unit.
+ *
+ * Renders only when ALL of these hold: advertising enabled, a real ad-unit
+ * slot ID is configured for this placement, AND the visitor accepted the
+ * consent banner (after consent, the container mounts and the ad fills it).
+ */
+const SLOT_KEY: Record<AdPlacement, keyof typeof SITE_CONFIG.adsense.slots> = {
+  'left-rail': 'leftRail',
+  'right-rail': 'rightRail',
+}
+
+export function AdSlot({ placement }: AdSlotProps) {
+  const slot = SITE_CONFIG.adsense.slots[SLOT_KEY[placement]]
+
+  useEffect(() => {
+    if (!slot || !areAdsAllowed()) return
+    window.adsbygoogle = window.adsbygoogle || []
+    window.adsbygoogle.push({})
+  }, [slot, placement])
+
+  if (!slot || !SITE_CONFIG.adsense.enabled || !areAdsAllowed()) {
+    return <div className="h-[250px] w-[300px]" aria-hidden="true" />
+  }
 
   return (
-    <div role="complementary" aria-label="Advertisement">
-      <div
-        data-ad-placement={placement}
-        className={`${dimensions} overflow-hidden rounded-xl border border-white/5 bg-white/[0.015]`}
+    <div className="w-[300px] overflow-hidden rounded-xl border border-white/5 bg-night-2/40">
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client={SITE_CONFIG.adsense.client}
+        data-ad-slot={slot}
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-ad-width={WIDTH}
+        data-ad-height={HEIGHT}
       />
     </div>
   )

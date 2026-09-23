@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import SideRailAds from '@/components/advertising/SideRailAds'
 import CookieConsent from '@/components/CookieConsent'
 import { useLocalProfile } from '@/hooks/useLocalProfile'
-import { getConsent, loadAnalytics } from '@/utils/consent'
+import { getConsent, loadAnalytics, loadAdsense } from '@/utils/consent'
 import Home from '@/pages/Home'
 
 const About = lazy(() => import('@/pages/About'))
@@ -46,7 +46,10 @@ export default function App() {
   const { clearData, clearConsentChoice } = useLocalProfile()
 
   useEffect(() => {
-    if (getConsent() === 'accepted') loadAnalytics()
+    if (getConsent() === 'accepted') {
+      loadAnalytics()
+      loadAdsense()
+    }
   }, [])
 
   const handleClearAllData = () => {

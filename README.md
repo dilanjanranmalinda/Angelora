@@ -37,13 +37,13 @@ npm test           # deterministic-logic verification
 
 ## Configuration
 
-The production URL is used for canonical links, Open Graph and structured data.
-It is read from `VITE_SITE_URL` (see `.env.example`). If unset, the app falls
-back to `window.location.origin`.
+The production URL, contact email and AdSense client are configured directly in
+`src/config.ts` — no environment variables are required to build or deploy. A
+committed `.env` is provided only for convenience and can be overridden later;
+Vercel ignores committed `.env` files, so anything critical lives in code here.
 
-```bash
-VITE_SITE_URL=https://angelora.vercel.app
-```
+To change the live domain later, update the URL in `config.ts`, the exposed
+URLs in `index.html`, and `public/robots.txt` + `public/sitemap.xml`.
 
 ## Deterministic engine
 

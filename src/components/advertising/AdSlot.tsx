@@ -32,8 +32,8 @@ export function AdSlot({ placement }: AdSlotProps) {
     window.adsbygoogle.push({})
   }, [slot, placement])
 
-  if (!slot || !SITE_CONFIG.adsense.enabled || !areAdsAllowed()) {
-    return <div className="h-[250px] w-[300px]" aria-hidden="true" />
+  if (!slot || typeof slot !== 'string' || slot.length === 0 || !areAdsAllowed()) {
+    return null
   }
 
   return (

@@ -4,6 +4,7 @@ import { generateDailyExperience } from '@/utils/dailyGenerator'
 import { buildDateFromParts, isValidDateInput } from '@/utils/dateUtils'
 import { numbersByValue } from '@/data/numbers'
 import { mirrorTimesByTime } from '@/data/mirrorTimes'
+import { luckyNumbers, luckyNumberByValue } from '@/data/luckyNumbers'
 import type { DailyExperience } from '@/types/daily'
 
 let failures = 0
@@ -99,6 +100,35 @@ for (const [d, m, y] of [[1, 1, 2000], [11, 11, 1999], [23, 8, 2002], [29, 2, 20
   const result = dr(d, m, y)
   check(`full run ${d}/${m}/${y} (number=${result.personalNumber.value})`, result.message.length > 5)
 }
+
+// 8. Lucky number data integrity
+check('luckyNumbers has 9 entries', luckyNumbers.length === 9)
+check(
+  'luckyNumbers cover 1..9 exactly once',
+  luckyNumbers.map((l) => l.number).sort().join(',') === '1,2,3,4,5,6,7,8,9',
+)
+for (const lucky of luckyNumbers) {
+  check(`lucky ${lucky.number} has copy`, lucky.omen.length > 0 && lucky.meaning.length > 0 && lucky.hint.length > 0)
+}
+
+// 9. Lucky number: range, lookup, stability, daily variety
+const luckyExp = generateDailyExperience({ birthDate: b(23, 8, 2002), date: new Date(2026, 0, 15) })
+check(
+  'lucky number within 1..9',
+  luckyExp.luckyNumber.number >= 1 && luckyExp.luckyNumber.number <= 9,
+)
+check(
+  'lucky number matches its data entry',
+  luckyNumberByValue[luckyExp.luckyNumber.number]?.omen === luckyExp.luckyNumber.omen,
+)
+const luckyAgain = generateDailyExperience({ birthDate: b(23, 8, 2002), date: new Date(2026, 0, 15) })
+check('lucky number stable within a day', luckyExp.luckyNumber.number === luckyAgain.luckyNumber.number)
+const luckyDates = new Set<number>()
+for (let i = 0; i < 30; i += 1) {
+  const d = generateDailyExperience({ birthDate: b(23, 8, 2002), date: new Date(2026, 0, 1 + i) })
+  luckyDates.add(d.luckyNumber.number)
+}
+check('lucky number varies across days', luckyDates.size > 1)
 
 if (failures > 0) {
   console.error(`\n${failures} failure(s)`)

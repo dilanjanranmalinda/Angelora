@@ -1,5 +1,6 @@
 import type { DailyExperience, DailyInput } from '@/types/daily'
 import { numbersByValue } from '@/data/numbers'
+import { luckyNumbers } from '@/data/luckyNumbers'
 import { colors } from '@/data/colors'
 import { mirrorTimes } from '@/data/mirrorTimes'
 import { energies } from '@/data/energies'
@@ -35,6 +36,7 @@ export function generateDailyExperience(input: DailyInput): DailyExperience {
   const personalNumber = calculatePersonalNumber(birthDate)
 
   const numberMeaning = numbersByValue[personalNumber.value]
+  const luckyNumber = pick(luckyNumbers, seed, personalNumber.value, 21)
   const color = pick(colors, seed, personalNumber.value, 1)
   const moment = pick(mirrorTimes, seed, personalNumber.value, 2)
   const energy = pick(energies, seed, personalNumber.value, 3)
@@ -51,6 +53,7 @@ export function generateDailyExperience(input: DailyInput): DailyExperience {
   return {
     personalNumber,
     numberMeaning,
+    luckyNumber,
     color,
     moment,
     energy,

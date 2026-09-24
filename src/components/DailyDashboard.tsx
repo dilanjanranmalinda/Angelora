@@ -32,6 +32,50 @@ export default function DailyDashboard({ experience }: DailyDashboardProps) {
         </p>
       </div>
 
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+        className="panel card-hover relative mb-3 overflow-hidden rounded-2xl p-6"
+      >
+        <div
+          className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full opacity-30"
+          style={{ background: 'radial-gradient(circle, #E8C77A, transparent 70%)' }}
+        />
+        <div className="relative flex items-center gap-5 sm:items-start">
+          <span className="text-5xl sm:text-6xl" aria-hidden="true">
+            🍀
+          </span>
+          <div className="min-w-0">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold">
+              Today&rsquo;s Lucky Number
+            </p>
+            <div className="mt-1 flex items-center gap-3">
+              <span className="font-display text-6xl font-extrabold leading-none text-gold sm:text-7xl">
+                {experience.luckyNumber.number}
+              </span>
+              <div className="min-w-0">
+                <p className="font-bold leading-tight text-ink">
+                  {experience.luckyNumber.omen}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-mute/90">
+                  {experience.luckyNumber.meaning}
+                </p>
+              </div>
+            </div>
+            {experience.luckyNumber.number === experience.personalNumber.value ? (
+              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold text-gold">
+                ✨ Double luck — it matches your personal number today!
+              </p>
+            ) : (
+              <p className="mt-3 text-xs leading-relaxed text-mute">
+                {experience.luckyNumber.hint}
+              </p>
+            )}
+          </div>
+        </div>
+      </motion.div>
+
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <DailyCard
           label="Number"

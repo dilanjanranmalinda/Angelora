@@ -56,6 +56,18 @@ export default function NumberCard({ experience }: { experience: DailyExperience
         In numerology traditions, this number describes recurring themes and energy rather than a
         fixed destiny. Treat it as a reflective style — not a prediction.
       </p>
+      <div className="mt-5 flex flex-wrap items-center gap-2 rounded-xl bg-gradient-to-r from-gold/15 to-transparent p-4">
+        <span className="text-xl" aria-hidden="true">🍀</span>
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">
+            Today&rsquo;s Lucky Number
+          </p>
+          <p className="text-sm leading-relaxed text-ink/90">
+            {experience.luckyNumber.number} — {experience.luckyNumber.omen}.{' '}
+            {experience.luckyNumber.hint}
+          </p>
+        </div>
+      </div>
     </DetailSection>
   )
 }

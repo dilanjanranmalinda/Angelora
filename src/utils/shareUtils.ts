@@ -17,6 +17,7 @@ export function buildShareText(experience: DailyExperience): string {
   return [
     `✨ ${greeting}`,
     `🔢 Personal Number: ${experience.personalNumber.value}`,
+    `🍀 Today's Lucky Number: ${experience.luckyNumber.number}`,
     `🎨 Today's Color: ${experience.color.name}`,
     `⏰ Your Moment: ${experience.moment.display}`,
     `💗 Energy: ${experience.energy.title}`,
@@ -56,7 +57,7 @@ export async function copyTextToClipboard(text: string): Promise<boolean> {
 export async function shareViaWebShare(experience: DailyExperience): Promise<void> {
   if (!canUseWebShare()) return
   await navigator.share({
-    title: `My ${SITE_CONFIG.brand} Day — ${experience.personalNumber.value}`,
+    title: `My ${SITE_CONFIG.brand} Day — Lucky 🍀 ${experience.luckyNumber.number}`,
     text: buildShareText(experience),
     url: buildShareUrl(),
   })

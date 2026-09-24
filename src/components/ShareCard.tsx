@@ -18,10 +18,12 @@ function Row({
   icon,
   label,
   value,
+  gold,
 }: {
   icon: string
   label: string
   value: string
+  gold?: boolean
 }) {
   return (
     <div
@@ -32,7 +34,7 @@ function Row({
         width: '100%',
         padding: '22px 40px',
         background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(248,247,255,0.1)',
+        border: `1px solid ${gold ? 'rgba(232,199,122,0.45)' : 'rgba(248,247,255,0.1)'}`,
         borderRadius: 24,
       }}
     >
@@ -55,7 +57,7 @@ function Row({
             margin: '6px 0 0',
             fontSize: 46,
             fontWeight: 800,
-            color: PALETTE.ink,
+            color: gold ? PALETTE.gold : PALETTE.ink,
             lineHeight: 1.1,
             textTransform: 'uppercase',
           }}
@@ -197,6 +199,7 @@ export default function ShareCard({ experience, format }: ShareCardProps) {
           }}
         >
           <Row icon="🔢" label="Personal Number" value={String(experience.personalNumber.value)} />
+          <Row icon="🍀" label="Lucky Number" value={String(experience.luckyNumber.number)} gold />
           <Row icon="🎨" label="Today's Color" value={c.name} />
           <Row icon="⏰" label="Your Moment" value={experience.moment.display} />
           <Row icon="💗" label="Today's Energy" value={experience.energy.title} />

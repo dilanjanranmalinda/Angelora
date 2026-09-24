@@ -45,6 +45,13 @@ export interface NumberMeaning {
   reflection: string
 }
 
+export interface LuckyNumber {
+  number: number
+  omen: string
+  meaning: string
+  hint: string
+}
+
 export interface PersonalNumberResult {
   value: number
   isMaster: boolean
@@ -53,6 +60,7 @@ export interface PersonalNumberResult {
 export interface DailyExperience {
   personalNumber: PersonalNumberResult
   numberMeaning: NumberMeaning
+  luckyNumber: LuckyNumber
   color: DailyColor
   moment: MirrorTime
   energy: DailyEnergy

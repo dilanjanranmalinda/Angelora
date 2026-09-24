@@ -35,24 +35,31 @@ export default function Privacy() {
 
       <ProseHeading>Analytics</ProseHeading>
       <ProseText>
-        We use Google Analytics (with IP anonymization enabled) to understand how
-        Angelora is used around the world &mdash; for example which pages are viewed,
-        how long the site is used, which devices and browsers visitors use, and
-        approximate location at country/city level. This helps us improve the
-        experience for everyone. Analytics data is aggregated and cannot be used
-        to identify you personally.
+        We use two privacy-focused analytics tools to understand how Angelora is
+        used around the world &mdash; for example which pages are viewed, how long
+        the site is used, which devices and browsers visitors use, and approximate
+        location at country/city level. Analytics data is aggregated and cannot be
+        used to identify you personally.
       </ProseText>
       <ProseText>
-        No personal identity is involved in analytics: your name, birthday and the
-        content of your daily experience are never sent to Google Analytics or any
-        other service. We do not sell, rent or trade your information.
+        <strong>Vercel Analytics</strong> (which powers our realtime visitor
+        dashboard) is cookieless and collects only pseudonymous usage counts from
+        the site itself. It runs for every visitor and does not require a consent
+        decision, because it does not place cookies or store personal data.
       </ProseText>
       <ProseText>
-        We ask for your consent with a short banner before loading analytics. If
-        you accept, an anonymous identifier cookie is placed and analytics loads; if
-        you decline, no analytics script runs. You can change your mind at any time
-        by using the &ldquo;Clear My Data&rdquo; button in the footer, which removes
+        <strong>Google Analytics</strong> (with IP anonymization enabled)
+        additionally measures visits in more detail. We ask for your consent with
+        a short banner before loading Google Analytics: if you accept, an
+        anonymous identifier cookie is placed and analytics loads; if you decline,
+        no Google Analytics script runs. You can change your mind at any time by
+        using the &ldquo;Clear My Data&rdquo; button in the footer, which removes
         your stored choice so the banner appears again.
+      </ProseText>
+      <ProseText>
+        No personal identity is involved in either tool: your name, birthday and
+        the content of your daily experience are never sent to any analytics
+        service. We do not sell, rent or trade your information.
       </ProseText>
       <ProseText>
         Some visitors, primarily in the UK and EU, are entitled to additional

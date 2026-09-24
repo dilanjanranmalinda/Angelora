@@ -7,6 +7,7 @@ import SideRailAds from '@/components/advertising/SideRailAds'
 import CookieConsent from '@/components/CookieConsent'
 import { useLocalProfile } from '@/hooks/useLocalProfile'
 import { getConsent, loadAnalytics, loadAdsense } from '@/utils/consent'
+import { Analytics } from '@vercel/analytics/react'
 import Home from '@/pages/Home'
 
 const About = lazy(() => import('@/pages/About'))
@@ -65,7 +66,7 @@ export default function App() {
           <Navbar />
           <SideRailAds />
           <CookieConsent />
-          <div className="flex-1">
+<div className="flex-1">
             <Suspense fallback={<PageFallback />}>
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -84,6 +85,7 @@ export default function App() {
               </Routes>
             </Suspense>
           </div>
+          <Analytics />
           <Footer onClearData={handleClearAllData} />
         </div>
       </BrowserRouter>

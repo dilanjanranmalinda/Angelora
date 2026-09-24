@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "tsx scripts/verify-logic.ts",
+    "test": "tsx scripts/verify-logic.ts && tsx scripts/verify-consent.ts",
     "preview": "vite preview"
   },
   "dependencies": {

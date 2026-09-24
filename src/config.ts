@@ -4,7 +4,8 @@ export const SITE_CONFIG = {
   altTagline: 'A little inspiration for every day.',
   description:
     'Discover your personal number, daily color, special time, positive message and symbolic daily inspiration based on your birthday.',
-  url: (import.meta.env.VITE_SITE_URL as string | undefined) ?? window.location.origin,
+  url: (import.meta.env?.VITE_SITE_URL as string | undefined) ??
+    (typeof window !== 'undefined' ? window.location.origin : ''),
   social: {
     handle: '@angelora',
   },
@@ -14,7 +15,7 @@ export const SITE_CONFIG = {
    *  the publisher is active. */
   adsense: {
     client: 'ca-pub-5345162386229869',
-    enabled: (import.meta.env.VITE_ADS_ENABLED as string | undefined) === 'true',
+    enabled: (import.meta.env?.VITE_ADS_ENABLED as string | undefined) === 'true',
     slots: {
       leftRail: '',
       rightRail: '',

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import IndexPage from '@/components/IndexPage'
 import { mirrorTimes } from '@/data/mirrorTimes'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 function timeSlug(time: string): string {
   return time.replace(':', '-')
@@ -10,12 +11,7 @@ function timeSlug(time: string): string {
 
 export default function MomentsList() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'Mirror Times & Repeating Clocks | Angelora',
-      description:
-        'What does 11:11 mean? What are mirror times? Explore the symbolic meaning of repeating clock patterns such as 11:11, 22:22 and 12:12.',
-      path: '/moments',
-    })
+    applySeoMeta({ ...STATIC_META['/moments'], path: '/moments' })
   }, [])
 
   return (

@@ -1,15 +1,11 @@
 import { useEffect } from 'react'
 import StaticPage, { ProseHeading, ProseText } from '@/components/StaticPage'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function Terms() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'Terms of Use | Angelora',
-      description:
-        'Angelora offers numerology-inspired content for entertainment and reflection. Read the terms of using the site.',
-      path: '/terms',
-    })
+    applySeoMeta({ ...STATIC_META['/terms'], path: '/terms' })
   }, [])
 
   return (

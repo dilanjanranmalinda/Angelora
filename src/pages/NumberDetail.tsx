@@ -1,6 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import DetailPageShell from '@/components/DetailPageShell'
 import { numbersByValue } from '@/data/numbers'
+import { numberMeta } from '@/seo/routeMeta'
 
 export default function NumberDetail() {
   const { number } = useParams<{ number: string }>()
@@ -11,12 +12,12 @@ export default function NumberDetail() {
     return <Navigate to="/numbers" replace />
   }
 
-  const title = `${entry.number} in Numerology — ${entry.title} | Angelora`
+  const { title, description } = numberMeta(entry)
 
   return (
     <DetailPageShell
       title={title}
-      description={entry.essence}
+      description={description}
       path={`/numbers/${entry.number}`}
       backTo="/numbers"
       backLabel="All numbers"

@@ -1,15 +1,11 @@
 import { useEffect } from 'react'
 import StaticPage, { ProseHeading, ProseText } from '@/components/StaticPage'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function About() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'About | Angelora',
-      description:
-        'Angelora turns your birthday and today\u2019s date into a personal daily moment — a number, a color, a mirror time, an energy and a message. For entertainment and reflection.',
-      path: '/about',
-    })
+    applySeoMeta({ ...STATIC_META['/about'], path: '/about' })
   }, [])
 
   return (

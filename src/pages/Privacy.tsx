@@ -1,15 +1,11 @@
 import { useEffect } from 'react'
 import StaticPage, { ProseHeading, ProseText } from '@/components/StaticPage'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function Privacy() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'Privacy Policy | Angelora',
-      description:
-        'Angelora is a frontend-only app — your birthday and name never leave your browser. We use Google Analytics to understand how visitors use the site.',
-      path: '/privacy',
-    })
+    applySeoMeta({ ...STATIC_META['/privacy'], path: '/privacy' })
   }, [])
 
   return (

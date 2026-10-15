@@ -23,12 +23,9 @@ import { useLocalProfile } from '@/hooks/useLocalProfile'
 import { useDailyExperience } from '@/hooks/useDailyExperience'
 import { birthdayLabel, storedBirthdayToDate } from '@/utils/dateUtils'
 import { applySeoMeta, applyFaqStructuredData, applyOrganizationStructuredData } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
-const HOME_META = {
-  title: 'Your Daily Signs & Personal Number | Angelora',
-  description:
-    'Discover your personal number, daily color, special time, positive message and symbolic daily inspiration based on your birthday.',
-}
+const HOME_META = STATIC_META['/']
 
 type Phase = 'idle' | 'loading' | 'done'
 

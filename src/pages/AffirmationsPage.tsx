@@ -2,15 +2,11 @@ import { useEffect } from 'react'
 import IndexPage from '@/components/IndexPage'
 import { affirmations } from '@/data/affirmations'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function AffirmationsPage() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'Daily Affirmations | Angelora',
-      description:
-        'A growing library of gentle daily affirmations for confidence, calm, growth, rest and new beginnings. Simple sentences to carry through your day.',
-      path: '/affirmations',
-    })
+    applySeoMeta({ ...STATIC_META['/affirmations'], path: '/affirmations' })
   }, [])
 
   return (

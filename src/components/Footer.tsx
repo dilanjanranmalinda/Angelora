@@ -31,6 +31,7 @@ export default function Footer({ onClearData }: FooterProps) {
               <li><Link className="text-sm text-mute hover:text-ink" to="/moments">Moments</Link></li>
               <li><Link className="text-sm text-mute hover:text-ink" to="/colors">Colors</Link></li>
               <li><Link className="text-sm text-mute hover:text-ink" to="/affirmations">Affirmations</Link></li>
+              <li><Link className="text-sm text-mute hover:text-ink" to="/blog">Guides &amp; Journal</Link></li>
             </ul>
           </nav>
 

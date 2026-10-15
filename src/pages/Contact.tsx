@@ -4,17 +4,13 @@ import { Check, Mail } from 'lucide-react'
 import StaticPage, { ProseHeading, ProseText } from '@/components/StaticPage'
 import { SITE_CONFIG } from '@/config'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
 
   useEffect(() => {
-    applySeoMeta({
-      title: 'Contact | Angelora',
-      description:
-        'Say hello to Angelora — feedback, a suggestion, or a question about your daily experience.',
-      path: '/contact',
-    })
+    applySeoMeta({ ...STATIC_META['/contact'], path: '/contact' })
   }, [])
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

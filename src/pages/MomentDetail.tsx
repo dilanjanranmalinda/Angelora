@@ -1,6 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import DetailPageShell from '@/components/DetailPageShell'
 import { mirrorTimesByTime } from '@/data/mirrorTimes'
+import { momentMeta } from '@/seo/routeMeta'
 
 function fromSlug(slug: string): string {
   if (slug.includes('-')) return slug.replace('-', ':')
@@ -16,12 +17,12 @@ export default function MomentDetail() {
     return <Navigate to="/moments" replace />
   }
 
-  const title = `What ${entry.display} Means — ${entry.title} | Angelora`
+  const { title, description } = momentMeta(entry)
 
   return (
     <DetailPageShell
       title={title}
-      description={entry.symbolicMeaning}
+      description={description}
       path={`/moments/${entry.time.replace(':', '-')}`}
       backTo="/moments"
       backLabel="All moments"

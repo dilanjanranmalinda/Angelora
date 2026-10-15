@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { to: '/numbers', label: 'Numbers' },
   { to: '/moments', label: 'Moments' },
   { to: '/colors', label: 'Colors' },
+  { to: '/blog', label: 'Guides' },
   { to: '/about', label: 'About' },
 ]
 

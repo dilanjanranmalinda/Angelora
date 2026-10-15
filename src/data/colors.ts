@@ -1,4 +1,5 @@
 import type { DailyColor } from '@/types/daily'
+import { slugify } from '@/utils/slugify'
 
 export const colors: DailyColor[] = [
   {
@@ -95,4 +96,8 @@ export const colors: DailyColor[] = [
 
 export const colorsByName: Record<string, DailyColor> = Object.fromEntries(
   colors.map((c) => [c.name.toLowerCase(), c]),
+)
+
+export const colorsBySlug: Record<string, DailyColor> = Object.fromEntries(
+  colors.map((c) => [slugify(c.name), c]),
 )

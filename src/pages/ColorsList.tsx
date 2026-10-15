@@ -4,15 +4,11 @@ import IndexPage from '@/components/IndexPage'
 import { colors } from '@/data/colors'
 import { slugify } from '@/utils/slugify'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function ColorsList() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'Symbolic Daily Colors | Angelora',
-      description:
-        'Lavender, gold, sage green and more — explore the symbolic meanings, moods and style ideas associated with each daily color.',
-      path: '/colors',
-    })
+    applySeoMeta({ ...STATIC_META['/colors'], path: '/colors' })
   }, [])
 
   return (

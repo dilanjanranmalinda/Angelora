@@ -1,10 +1,11 @@
 import { useParams, Navigate } from 'react-router-dom'
 import DetailPageShell from '@/components/DetailPageShell'
-import { colorsByName } from '@/data/colors'
+import { colorsBySlug } from '@/data/colors'
+import { colorMeta } from '@/seo/routeMeta'
 
 export default function ColorDetail() {
   const { name } = useParams<{ name: string }>()
-  const entry = name ? colorsByName[name.toLowerCase()] : undefined
+  const entry = name ? colorsBySlug[name.toLowerCase()] : undefined
 
   if (!entry) {
     return <Navigate to="/colors" replace />
@@ -12,12 +13,12 @@ export default function ColorDetail() {
 
   const paths = `${entry.hex}55`
 
-  const title = `${entry.name} — Meaning & Symbolism | Angelora`
+  const { title, description } = colorMeta(entry)
 
   return (
     <DetailPageShell
       title={title}
-      description={entry.symbolicMeaning}
+      description={description}
       path={`/colors/${name?.toLowerCase()}`}
       backTo="/colors"
       backLabel="All colors"

@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom'
 import IndexPage from '@/components/IndexPage'
 import { numbers } from '@/data/numbers'
 import { applySeoMeta } from '@/utils/seo'
+import { STATIC_META } from '@/seo/routeMeta'
 
 export default function NumbersList() {
   useEffect(() => {
-    applySeoMeta({
-      title: 'Personal Numbers in Numerology | Angelora',
-      description:
-        'What do the numbers 1 to 9, and master numbers 11, 22 and 33, symbolize? Learn how your birthday reduces to a personal number in numerology traditions.',
-      path: '/numbers',
-    })
+    applySeoMeta({ ...STATIC_META['/numbers'], path: '/numbers' })
   }, [])
 
   return (
